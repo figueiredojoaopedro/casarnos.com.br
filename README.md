@@ -1,0 +1,6 @@
+Color Pallete:
+-D6D2D2
+-F1E4F3
+-F4BBD3
+-F686BD
+-FE5D9F
