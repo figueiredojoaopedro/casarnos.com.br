@@ -9,7 +9,7 @@ export default function Home() {
         <FloatingWeddingEmojisBackground></FloatingWeddingEmojisBackground>
         <Services></Services>
         <Pricing></Pricing>
-        {/* <About></About> */}
+        <About></About>
       </section>
     </div>
   );
