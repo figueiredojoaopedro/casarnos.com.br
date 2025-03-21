@@ -46,11 +46,11 @@ const FloatingEmoji = ({
       animate={{
         opacity: [0.9, 0.6, 0.8],
         scale: [1.1, 1.3, 1, 0.8, 1.5],
-        x: x + Math.random() * 100 - 50,
-        y: y + Math.random() * 100 - 50,
+        x: x + Math.random() * 50 - 25,
+        y: y + Math.random() * 50 - 25,
       }}
       transition={{
-        duration: 5 + Math.random() * 10,
+        duration: 5 + Math.random() * 5,
         repeat: Number.POSITIVE_INFINITY,
         repeatType: "reverse",
       }}
@@ -66,14 +66,19 @@ function FloatingEmojis() {
   >([]);
 
   useEffect(() => {
-    const newEmojis = Array.from({ length: 20 }, (_, i) => ({
+    const newEmojis = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      size: Math.random() * 20 + 15, // Slightly larger to make emojis more visible
+      size: Math.random() * 20 + 30, // Slightly larger to make emojis more visible
       emoji: weddingEmojis[Math.floor(Math.random() * weddingEmojis.length)],
     }));
     setEmojis(newEmojis);
+
+    // Cleanup function to clear emojis when component unmounts
+    return () => {
+      setEmojis([]);
+    };
   }, []);
 
   return (
@@ -98,7 +103,7 @@ export default function FloatingWeddingEmojisBackground({
   const words = slogan.split(" ");
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-gradient-to-br from-white to-gray-100 ">
+    <div className="relative min-h-screen w-screen flex items-center justify-center overflow-hidden  ">
       <FloatingEmojis />
 
       <div className="relative z-10 container mx-auto px-4 md:px-6 text-center">
@@ -108,7 +113,7 @@ export default function FloatingWeddingEmojisBackground({
           transition={{ duration: 2 }}
           className="max-w-4xl mx-auto"
         >
-          <h1 className=" text-5xl sm:text-7xl md:text-8xl font-bold mb-2 tracking-tighter">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-2 tracking-tighter">
             <span className="">
               <motion.span
                 initial={{ y: 0, opacity: 0 }}

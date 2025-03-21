@@ -4,9 +4,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = (): void => {
@@ -27,13 +25,13 @@ const Navbar = (props: Props) => {
           </Link>
           <Link
             className="hover:underline hover:underline-offset-4"
-            href={"/pages/services"}
+            href={"#services"}
           >
             Serviços
           </Link>
           <Link
             className="hover:underline hover:underline-offset-4"
-            href={"/pages/about"}
+            href={"#about"}
           >
             Sobre
           </Link>
@@ -58,8 +56,8 @@ const Navbar = (props: Props) => {
         {isOpen && (
           <div className="md:hidden flex flex-col space-y-4 items-center justify-center bg-white p-4">
             <Link href={"/"}>Home</Link>
-            <Link href={"/pages/services"}>Serviços</Link>
-            <Link href={"/pages/about"}>Sobre</Link>
+            <Link href={"#services"}>Serviços</Link>
+            <Link href={"#about"}>Sobre</Link>
             <Link href={"/register"}>
               <Button className="bg-rose-400 transition duration-150 ease-in-out">
                 Comece já
