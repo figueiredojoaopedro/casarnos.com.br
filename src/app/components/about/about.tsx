@@ -6,12 +6,12 @@ import {
   AccordionContent,
 } from "@/components/ui/accordion";
 
-interface QuestionType {
+interface QuestionAnswerType {
   question: string;
   answer: string;
 }
 
-const questions: QuestionType[] = [];
+const questionsAnswers: QuestionAnswerType[] = [];
 const About = () => {
   return (
     <section className="w-full pb-20 pt-16 flex flex-col items-center justify-center space-y-4">
@@ -20,6 +20,9 @@ const About = () => {
       </h2>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
+          {questionsAnswers.map((obj, index) => (
+            <></>
+          ))}
           <AccordionTrigger className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-rose-500 text-transparent bg-clip-text">
             Is it accessible?
           </AccordionTrigger>
