@@ -69,6 +69,8 @@ const FeatureCard = React.memo(
   )
 );
 
+FeatureCard.displayName = "FeatureCard";
+
 const Services = () => {
   return (
     <section
