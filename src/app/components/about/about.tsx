@@ -21,7 +21,14 @@ const About = () => {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           {questionsAnswers.map((obj, index) => (
-            <></>
+            <span key={index}>
+              <AccordionTrigger className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-rose-500 text-transparent bg-clip-text">
+                {obj.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-xl font-bold text-black">
+                {obj.answer}
+              </AccordionContent>
+            </span>
           ))}
           <AccordionTrigger className="text-xl font-bold bg-gradient-to-r from-indigo-500 to-rose-500 text-transparent bg-clip-text">
             Is it accessible?
