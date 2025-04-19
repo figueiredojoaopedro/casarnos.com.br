@@ -1,7 +1,7 @@
 import FloatingWeddingEmojisBackground from "@/app/components/floatingWeddingEmojis/floating-wedding-emojis";
 import Services from "./components/providedServices/services";
-import Pricing from "./components/pricing/pricing";
-import About from "./components/about/about";
+// import Pricing from "./components/pricing/pricing";
+// import About from "./components/about/about";
 export default function Home() {
   return (
     <div>
