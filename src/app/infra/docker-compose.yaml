@@ -1,0 +1,18 @@
+services:
+  db:
+    restart: always
+    container_name: dev_casarnos_db
+    image: postgres:17-alpine
+    env_file:
+      - ../../../.env.development
+    # environment:
+    #   POSTGRES_USER: dev_user
+    #   POSTGRES_PASSWORD: secret
+    #   POSTGRES_DB: dev_casarnos
+    #   POSTGRES_PORT: 5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5431:5432"
+volumes:
+  postgres_data:

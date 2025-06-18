@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "npm run services:up && next dev --turbopack",
+    "services:up": "docker compose -f src/app/infra/docker-compose.yaml up -d",
+    "services:down": "docker compose -f src/app/infra/docker-compose.yaml down",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -16,6 +18,7 @@
     "framer-motion": "^12.4.10",
     "lucide-react": "^0.477.0",
     "next": "15.2.0",
+    "pg": "^8.14.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.2",
@@ -25,6 +28,7 @@
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.11.13",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.20",
