@@ -16,6 +16,7 @@ const status = (props: Props) => {
   });
 
   useEffect(() => {
+    // call the function only if the user is admin...
     getStatus();
   }, []);
 

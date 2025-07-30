@@ -161,16 +161,19 @@ export default function FloatingWeddingEmojisBackground({
                        p-px rounded-2xl backdrop-blur-lg 
                        overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
           >
-            <Link href="/services">
+            <Link href="/pages/register">
               <Button
                 variant="ghost"
-                className="rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
+                style={{
+                  cursor: `pointer`,
+                }}
+                className=" rounded-[1.15rem] px-8 py-6 text-lg font-semibold backdrop-blur-md 
                          bg-white/80 hover:bg-white
                          text-indigo-400 hover:text-indigo-500 transition-all duration-300 
                          group-hover:-translate-y-0.5 border border-pink-200/50
                          hover:shadow-md"
               >
-                <span className="opacity-90 group-hover:opacity-100 transition-opacity">
+                <span className=" opacity-90 group-hover:opacity-100 transition-opacity">
                   Comece Já
                 </span>
                 <span

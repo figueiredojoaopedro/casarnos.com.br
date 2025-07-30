@@ -19,7 +19,7 @@ const Navbar = () => {
             {"casarnos.com.br"}
           </p>
         </Link>
-        <div className="text-white hidden md:flex space-x-6 items-center">
+        <div className="cursor-pointer text-white hidden md:flex space-x-6 items-center">
           <Link className="hover:underline hover:underline-offset-4" href={"/"}>
             Home
           </Link>
@@ -35,14 +35,9 @@ const Navbar = () => {
           >
             Sobre
           </Link>
-          <Link href={"/register"}>
+          <Link href={"/pages/register"}>
             <Button className="bg-rose-400 hover:bg-rose-300 transition duration-150 ease-in-out">
               Comece já
-            </Button>
-          </Link>
-          <Link href={"/login"}>
-            <Button className="text-black" variant="outline">
-              Login
             </Button>
           </Link>
         </div>
@@ -54,17 +49,14 @@ const Navbar = () => {
       </div>
       <div>
         {isOpen && (
-          <div className="md:hidden flex flex-col space-y-4 items-center justify-center bg-white p-4">
+          <div className="cursor-pointer md:hidden flex flex-col space-y-4 items-center justify-center bg-white p-4">
             <Link href={"/"}>Home</Link>
             <Link href={"#services"}>Serviços</Link>
             <Link href={"#about"}>Sobre</Link>
-            <Link href={"/register"}>
+            <Link href={"/pages/register"}>
               <Button className="bg-rose-400 transition duration-150 ease-in-out">
                 Comece já
               </Button>
-            </Link>
-            <Link href={"/login"}>
-              <Button variant="outline">Login</Button>
             </Link>
           </div>
         )}

@@ -1,6 +1,16 @@
-Color Pallete:
+### Color Pallete:
+
 -D6D2D2
 -F1E4F3
 -F4BBD3
 -F686BD
 -FE5D9F
+
+### .env necessary variables:
+
+POSTGRES_PASSWORD
+POSTGRES_USER
+POSTGRES_DB
+POSTGRES_HOSTS
+POSTGRES_PORT
+POSTGRES_URL
