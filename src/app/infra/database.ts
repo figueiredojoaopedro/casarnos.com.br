@@ -13,7 +13,7 @@ const getSSLValues = (): SSLObj | boolean => {
   return false;
 };
 
-const query = async (text: string, params?: any[]) => {
+const query = async (text: string, params?: any[]): Promise<any> => {
   if (!text) {
     console.error("Missing text param.");
     return null;
@@ -40,9 +40,7 @@ const query = async (text: string, params?: any[]) => {
     return result;
   } catch (error) {
     console.error("Error: ", error);
-    throw {
-      message: "Error making the query",
-    };
+    throw error;
   } finally {
     client.end();
   }

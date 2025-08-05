@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -46,8 +46,6 @@ const page = (props: Props) => {
   ]);
 
   const onChangeInputValues = (event: any) => {
-    console.log("test event", event.target.value);
-
     const { name, value } = event.target;
 
     const inputsReference = inputs.map((input) => {
@@ -68,19 +66,25 @@ const page = (props: Props) => {
         "Content-Type": "application/json",
       };
 
+      const body = JSON.stringify(
+        inputs.reduce((acc, curr) => {
+          acc[curr.name] = curr.value;
+          return acc;
+        }, {} as Record<string, string>)
+      );
       const config = {
-        method: "GET",
+        method: "POST",
         headers,
+        body,
       };
 
-      const response = await fetch("/api/health");
+      const response = await fetch("/api/v1/controllers/register", config);
 
-      console.log("test", response, await response.json());
+      console.log("test", await response.json());
     } catch (error) {
       console.error("Error: ", error);
     }
   };
-
   return (
     <div className="min-h-screen min-w-full flex flex-col justify-center items-start">
       <div className="md:w-1/2 flex flex-col gap-4">

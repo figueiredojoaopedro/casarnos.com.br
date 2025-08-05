@@ -29,7 +29,7 @@ const status = (props: Props) => {
         headers,
       };
 
-      const url = `/api/health/`;
+      const url = `/api/v1/controllers/health`;
 
       const result = await fetch(url, config);
 
