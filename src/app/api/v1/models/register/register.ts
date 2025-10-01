@@ -3,16 +3,17 @@ import database from "@/app/infra/database";
 const insertNewUserAtUsersTable = async (
   name: string,
   email: string,
-  hashedPassword: string
+  hashedPassword: string,
+  email_verification_code: string
 ) => {
   try {
     const text = `
-      INSERT INTO users (name, email, password, created_at)
-      VALUES ($1, $2, $3, NOW())
+      INSERT INTO users (name, email, password, created_at, email_verification_code)
+      VALUES ($1, $2, $3, NOW(), $4)
       RETURNING email, created_at
     `;
 
-    const values = [name, email, hashedPassword];
+    const values = [name, email, hashedPassword, email_verification_code];
 
     const result = await database.query(text, values);
 

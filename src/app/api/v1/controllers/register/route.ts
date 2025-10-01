@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import crypto from "crypto";
 import models from "../../models/models";
 import utils from "../../utils/utils";
 
@@ -41,10 +42,22 @@ export const POST = async (req: NextRequest) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 12);
 
+    const verificationEmailCode = utils.generateEmailVerificationCode();
+
+    if (!verificationEmailCode) {
+      throw new Error("Error during email verification code generation.");
+    }
+
+    const hashedVerificationEmailCode = await bcrypt.hash(
+      verificationEmailCode,
+      12
+    );
+
     const insertionResult = await models.insertNewUserAtUsersTable(
       name,
       email,
-      hashedPassword
+      hashedPassword,
+      hashedVerificationEmailCode
     );
 
     if (!insertionResult) {

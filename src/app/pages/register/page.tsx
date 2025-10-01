@@ -1,7 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import AlertaComponent from "@/app/components/alert/alert";
 
 type Props = {};
 
@@ -14,6 +16,8 @@ type Inputs = {
 };
 
 const page = (props: Props) => {
+  const router = useRouter();
+
   const [inputs, setInputs] = useState<Inputs[]>([
     {
       name: "name",
@@ -60,8 +64,6 @@ const page = (props: Props) => {
 
   const handleRegister = async () => {
     try {
-      console.log("test register");
-
       const headers = {
         "Content-Type": "application/json",
       };
@@ -80,7 +82,12 @@ const page = (props: Props) => {
 
       const response = await fetch("/api/v1/controllers/register", config);
 
-      console.log("test", await response.json());
+      if (!response.ok && response.status !== 201) {
+        throw new Error("Failed to register.");
+      }
+
+      const jsonData = await response.json();
+      console.log("test", jsonData);
     } catch (error) {
       console.error("Error: ", error);
     }
