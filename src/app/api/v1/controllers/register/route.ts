@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import crypto from "crypto";
+import functions from "../../functions/functions";
 import models from "../../models/models";
 import utils from "../../utils/utils";
 
@@ -64,12 +64,26 @@ export const POST = async (req: NextRequest) => {
       throw new Error("Error during insertion.");
     }
 
-    console.log("test insertionResult", insertionResult);
+    const verificationEmailLink = `https://casarnos.com.br/pages/emailVerification?email=${email}`;
+
+    // send email verification code to the user be verified
+    const resultSendingEmailVerificationCode =
+      await functions.sendVerificationEmail(
+        verificationEmailCode,
+        email,
+        name.split(" ")[0],
+        verificationEmailLink
+      );
+
+    if (!resultSendingEmailVerificationCode) {
+      throw new Error("Error sending the email verification code");
+    }
 
     return NextResponse.json(
       {
-        message: "Success! ",
+        message: "Success!",
         user: email,
+        ok: true,
       },
       {
         status: 201,
@@ -83,6 +97,7 @@ export const POST = async (req: NextRequest) => {
       return NextResponse.json(
         {
           message: error?.message,
+          ok: false,
         },
         {
           status: error?.status,
@@ -93,6 +108,7 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json(
       {
         message: "Error during the POST performance.",
+        ok: false,
       },
       { status: 500 }
     );

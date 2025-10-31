@@ -69,11 +69,15 @@ const page = (props: Props) => {
       };
 
       const body = JSON.stringify(
-        inputs.reduce((acc, curr) => {
-          acc[curr.name] = curr.value;
-          return acc;
-        }, {} as Record<string, string>)
+        inputs.reduce(
+          (acc, curr) => {
+            acc[curr.name] = curr.value;
+            return acc;
+          },
+          {} as Record<string, string>
+        )
       );
+
       const config = {
         method: "POST",
         headers,
@@ -87,11 +91,17 @@ const page = (props: Props) => {
       }
 
       const jsonData = await response.json();
-      console.log("test", jsonData);
+
+      const email = inputs.find((input) => input.name === "email");
+
+      if (jsonData.ok) {
+        router.push(`/pages/emailVerification?email=${email?.value}`);
+      }
     } catch (error) {
       console.error("Error: ", error);
     }
   };
+
   return (
     <div className="min-h-screen min-w-full flex flex-col justify-center items-start">
       <div className="md:w-1/2 flex flex-col gap-4">
